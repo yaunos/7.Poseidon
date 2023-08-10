@@ -4,9 +4,13 @@ package com.nnk.springboot.domain;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "rulename")
+@Table(name = "rule_name")
 public class RuleName {
     // TODO: Map columns in data table RULENAME with corresponding java fields
+
+    /**
+     *  => Mapping DONE according to the SQL and Java conventions
+     */
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,9 +22,9 @@ public class RuleName {
     private String description;
     @Column(name = "json")
     private String json;
-    @Column(name = "sqlStr")
+    @Column(name = "sql_str")
     private String sqlStr;
-    @Column(name = "sqlPart")
+    @Column(name = "sql_part")
     private String sqlPart;
 
 }

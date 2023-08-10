@@ -1,7 +1,9 @@
 package com.nnk.springboot.controllers;
 
 import com.nnk.springboot.domain.Trade;
+import com.nnk.springboot.service.TradeService;
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,10 +17,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class TradeController {
     // TODO: Inject Trade service
 
+    // => DONE with @Autowired
+
+    @Autowired
+    private TradeService tradeService;
+
     @RequestMapping("/trade/list")
     public String home(Model model)
     {
         // TODO: find all Trade, add to model
+
+        // => DONE
+        model.addAttribute("trade", tradeService.getAllTrades());
+
         return "trade/list";
     }
 

@@ -2,6 +2,7 @@ package com.nnk.springboot.controllers;
 
 import com.nnk.springboot.domain.BidList;
 import com.nnk.springboot.service.BidListService;
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,19 +19,20 @@ import java.util.List;
 @Controller
 public class BidListController {
     // TODO: Inject Bid service
+
     // => DONE with @Autowired
 
     @Autowired
     private BidListService bidListService;
 
     @RequestMapping("/bidList/list")
-    public String home(Model model)
+    public String home(Model model, HttpSession httpSession)
     {
         // TODO: call service find all bids to show to the view
 
         // => DONE
         List<BidList> bidList = bidListService.getAllBids();
-        model.addAttribute("bidList", bidList);
+        model.addAttribute("bidLists", bidList);
 
         return "bidList/list";
     }
@@ -56,12 +58,17 @@ public class BidListController {
     public String updateBid(@PathVariable("id") Integer id, @Valid BidList bidList,
                              BindingResult result, Model model) {
         // TODO: check required fields, if valid call service to update Bid and return list Bid
+
         return "redirect:/bidList/list";
     }
 
     @GetMapping("/bidList/delete/{id}")
     public String deleteBid(@PathVariable("id") Integer id, Model model) {
         // TODO: Find Bid by Id and delete the bid, return to Bid list
+
+        // => DONE
+        bidListService.deleteBidList(id);
+
         return "redirect:/bidList/list";
     }
 }
