@@ -20,4 +20,11 @@ public class RuleNameService {
     public List<RuleName> getAllRuleNames() {
         return ruleNameRepository.findAll();
     }
+
+    /**
+     * DELETE a rule name
+     */
+    public void deleteRuleName (final Integer id) {
+        ruleNameRepository.deleteById(id);
+    }
 }

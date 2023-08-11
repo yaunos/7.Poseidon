@@ -21,5 +21,11 @@ public class TradeService {
         return tradeRepository.findAll();
     }
 
+    /**
+     * DELETE a trade
+     */
+    public void deleteTrade (final Integer id) {
+        tradeRepository.deleteById(id);
+    }
 
 }

@@ -61,6 +61,11 @@ public class BidList {
     @Column(name="side")
     private String side;
 
+    private int getId() {
+        return id;
+    }
 
-
+    private void setId(Integer id) {
+        //return id;
+    }
 }

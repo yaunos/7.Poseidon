@@ -20,4 +20,12 @@ public class RatingService {
     public List<Rating> getAllRatings() {
         return ratingRepository.findAll();
     }
+
+    /**
+     * DELETE a rating
+     *
+     */
+    public void deleteRating(final Integer id) {
+        ratingRepository.deleteById(id);
+    }
 }

@@ -19,4 +19,11 @@ public class CurvePointService {
     public List<CurvePoint> getAllCurvePoints() {
         return curvePointRepository.findAll();
     }
+
+    /**
+     * DELETE a curve point
+     */
+    public void deleteCurvePoint(final Integer id) {
+        curvePointRepository.deleteById(id);
+    }
 }

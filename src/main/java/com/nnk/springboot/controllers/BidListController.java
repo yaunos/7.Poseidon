@@ -2,7 +2,6 @@ package com.nnk.springboot.controllers;
 
 import com.nnk.springboot.domain.BidList;
 import com.nnk.springboot.service.BidListService;
-import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,7 +25,7 @@ public class BidListController {
     private BidListService bidListService;
 
     @RequestMapping("/bidList/list")
-    public String home(Model model, HttpSession httpSession)
+    public String home(Model model)
     {
         // TODO: call service find all bids to show to the view
 
@@ -45,12 +44,31 @@ public class BidListController {
     @PostMapping("/bidList/validate")
     public String validate(@Valid BidList bid, BindingResult result, Model model) {
         // TODO: check data valid and save to db, after saving return bid list
-        return "bidList/add";
+
+        // if info is correct in the form
+        if (!result.hasErrors()) {
+            bidListService.saveBidList(bid);
+            model.addAttribute("bidList", bidListService.getAllBids());
+
+            return "bidList/list";
+
+        } else {
+            // stay on the form
+            return "bidList/add";
+
+        }
+
+
+
     }
 
     @GetMapping("/bidList/update/{id}")
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
         // TODO: get Bid by Id and to model then show to the form
+
+        // => DONE
+
+        BidList bidList = bidListService.getABidListByItsId(id).orElseThrow(() -> new IllegalArgumentException("Bidlist number " + id + " doesn't exist"));
         return "bidList/update";
     }
 
@@ -59,7 +77,16 @@ public class BidListController {
                              BindingResult result, Model model) {
         // TODO: check required fields, if valid call service to update Bid and return list Bid
 
-        return "redirect:/bidList/list";
+        //if (!result.hasErrors()) {
+        //    bidList.setId(id);
+        //    bidListService.saveBidList(bidList);
+        //    model.addAttribute("bidList", bidListService.getAllBids());
+        //    return "redirect:/bidList/list";
+        //} else {
+
+        return "bidList/update";
+
+
     }
 
     @GetMapping("/bidList/delete/{id}")

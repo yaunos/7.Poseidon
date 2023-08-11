@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
 
 
 @Controller
@@ -27,6 +28,11 @@ public class CurveController {
     public String home(Model model)
     {
         // TODO: find all Curve Point, add to model
+
+        // => DONE
+        List<CurvePoint> curvePoint = curvePointService.getAllCurvePoints();
+        model.addAttribute("curvePoints", curvePoint);
+
         return "curvePoint/list";
     }
 
@@ -57,6 +63,8 @@ public class CurveController {
     @GetMapping("/curvePoint/delete/{id}")
     public String deleteBid(@PathVariable("id") Integer id, Model model) {
         // TODO: Find Curve by Id and delete the Curve, return to Curve list
+
+        curvePointService.deleteCurvePoint(id);
         return "redirect:/curvePoint/list";
     }
 }
