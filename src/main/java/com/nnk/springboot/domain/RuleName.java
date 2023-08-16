@@ -2,7 +2,9 @@ package com.nnk.springboot.domain;
 
 
 import jakarta.persistence.*;
+import lombok.Data;
 
+@Data
 @Entity
 @Table(name = "rule_name")
 public class RuleName {

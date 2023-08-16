@@ -21,33 +21,30 @@
 			<form th:action="@{/app-logout}" method="POST">
 				<input type="submit" value="Logout"/>
 			</form>
-
 		</div>
 	</div>
-	<div class="row"><h2>Rating List</h2></div>
+	<div class="row"><h2>Curve Point List</h2></div>
 	<div class="row">
-		<a href="/rating/add" class="btn btn-primary btn-sm">Add New</a>
+		<a href="/curvePoint/add" class="btn btn-primary btn-sm">Add New</a>
 		<table class="table table-bordered">
 			<thead>
 				<tr>
 					<th>Id</th>
-					<th>MoodysRating</th>
-					<th>SandRating</th>
-					<th>FitchRating</th>
-					<th>Order</th>
+					<th>CurvePointId</th>
+					<th>Term</th>
+					<th>Value</th>
 					<th>Action</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="rating : ${ratings}">
-					<td style="width: 10%" th:text="${rating.id}"></td>
-					<td th:text="${rating.moodysRating}"></td>
-					<td th:text="${rating.sandRating}"></td>
-					<td th:text="${rating.fitchRating}"></td>
-					<td th:text="${rating.orderNumber}"></td>
+				<tr th:each="curvePoint : ${curvePoints}">
+					<td style="width: 10%" th:text="${curvePoint.id}"></td>
+					<td th:text="${curvePoint.id}"></td>
+					<td th:text="${curvePoint.term}"></td>
+					<td th:text="${curvePoint.value}"></td>
 					<td style="width: 15%" class="text-center">
-						<a th:href="@{/rating/update/{id}(id=${rating.id})}">Edit</a>&nbsp;|&nbsp;
-						<a th:href="@{/rating/delete/{id}(id=${rating.id})}">Delete</a>
+						<a th:href="@{/curvePoint/update/{id}(id=${curvePoint.id})}">Edit</a>&nbsp;|&nbsp;
+						<a th:href="@{/curvePoint/delete/{id}(id=${curvePoint.id})}">Delete</a>
 					</td>
 				</tr>
 			</tbody>

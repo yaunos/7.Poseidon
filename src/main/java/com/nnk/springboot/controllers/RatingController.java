@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
 
 @Controller
 public class RatingController {
@@ -30,8 +31,7 @@ public class RatingController {
         // TODO: find all Rating, add to model
 
         // IN PROGRESS
-        //List<Rating> ratingList = ratingService.getAllRatings();
-        //model.addAttribute("ratingList", ratingList);
+        List<Rating> rating = ratingService.getAllRatings();
         model.addAttribute("ratings", ratingRepository.findAll());
         return "rating/list";
     }

@@ -1,10 +1,12 @@
 package com.nnk.springboot.domain;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.sql.Timestamp;
 
 
+@Data
 @Entity
 @Table(name = "curve_point")
 public class CurvePoint {
@@ -28,5 +30,7 @@ public class CurvePoint {
     private Double value;
     @Column(name = "creation_date")
     private Timestamp creationDate;
+
+
 
 }
