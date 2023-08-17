@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class RatingService {
@@ -19,6 +20,21 @@ public class RatingService {
      */
     public List<Rating> getAllRatings() {
         return ratingRepository.findAll();
+    }
+
+    /**
+     * READ (ONE) : Find a rating by id from all ratings from data source
+     */
+    public Optional<Rating> getARatingByItsId(final Integer id) {
+        return ratingRepository.findById(id);
+    }
+
+    /**
+     * UPDATE/SAVE a rating by id from all ratings from data source
+     */
+    public Rating saveRating(Rating rating) {
+        Rating savedRating = ratingRepository.save(rating);
+        return savedRating;
     }
 
     /**

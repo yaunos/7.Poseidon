@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CurvePointService {
@@ -18,6 +19,13 @@ public class CurvePointService {
      */
     public List<CurvePoint> getAllCurvePoints() {
         return curvePointRepository.findAll();
+    }
+
+    /**
+     * READ (ONE) : Find a curve point by id from all curve points from data source
+     */
+    public Optional<CurvePoint> getACurvePointByItsId(final Integer id) {
+        return curvePointRepository.findById(id);
     }
 
     /**

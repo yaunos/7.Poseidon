@@ -39,7 +39,16 @@ public class RuleNameController {
     @PostMapping("/ruleName/validate")
     public String validate(@Valid RuleName ruleName, BindingResult result, Model model) {
         // TODO: check data valid and save to db, after saving return RuleName list
-        return "ruleName/add";
+        if (!result.hasErrors()) {
+            ruleNameService.saveRuleName(ruleName);
+            model.addAttribute("ruleName", ruleNameService.getAllRuleNames());
+
+            return "ruleName/list";
+
+        } else {
+
+            return "ruleName/add";
+        }
     }
 
     @GetMapping("/ruleName/update/{id}")

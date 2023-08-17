@@ -63,6 +63,9 @@ public class CurveController {
     @GetMapping("/curvePoint/update/{id}")
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
         // TODO: get CurvePoint by Id and to model then show to the form
+
+        CurvePoint curvePoint = curvePointService.getACurvePointByItsId(id).orElseThrow(() -> new IllegalArgumentException("Bidlist number " + id + " doesn't exist"));
+        model.addAttribute("curvePoint", curvePoint);
         return "curvePoint/update";
     }
 
@@ -70,7 +73,14 @@ public class CurveController {
     public String updateBid(@PathVariable("id") Integer id, @Valid CurvePoint curvePoint,
                              BindingResult result, Model model) {
         // TODO: check required fields, if valid call service to update Curve and return Curve list
-        return "redirect:/curvePoint/list";
+        if(!result.hasErrors()) {
+            curvePoint.setId(id);
+            curvePointService.saveCurvePoint(curvePoint);
+            model.addAttribute("curvePoint", curvePointService.getAllCurvePoints());
+            return "redirect:/curvePoint/list";
+        } else {
+            return "redirect:/curvePoint/update";
+        }
     }
 
     @GetMapping("/curvePoint/delete/{id}")

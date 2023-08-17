@@ -30,7 +30,7 @@ public class RatingController {
     {
         // TODO: find all Rating, add to model
 
-        // IN PROGRESS
+        // => DONE
         List<Rating> rating = ratingService.getAllRatings();
         model.addAttribute("ratings", ratingRepository.findAll());
         return "rating/list";
@@ -44,12 +44,26 @@ public class RatingController {
     @PostMapping("/rating/validate")
     public String validate(@Valid Rating rating, BindingResult result, Model model) {
         // TODO: check data valid and save to db, after saving return Rating list
-        return "rating/add";
+
+        if (!result.hasErrors()) {
+            ratingService.saveRating(rating);
+            model.addAttribute("rating", ratingService.getAllRatings());
+
+            return "rating/list";
+
+        } else {
+
+            return "rating/add";
+        }
     }
 
     @GetMapping("/rating/update/{id}")
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
         // TODO: get Rating by Id and to model then show to the form
+
+        // => DONE
+        Rating rating = ratingService.getARatingByItsId(id).orElseThrow(() -> new IllegalArgumentException("Bidlist number " + id + " doesn't exist"));
+        model.addAttribute("rating", rating);
         return "rating/update";
     }
 
@@ -57,7 +71,14 @@ public class RatingController {
     public String updateRating(@PathVariable("id") Integer id, @Valid Rating rating,
                              BindingResult result, Model model) {
         // TODO: check required fields, if valid call service to update Rating and return Rating list
-        return "redirect:/rating/list";
+        if (!result.hasErrors()) {
+            rating.setId(id);
+            ratingService.saveRating(rating);
+            model.addAttribute("rating", ratingService.getAllRatings());
+            return "redirect:/rating/list";
+        } else {
+            return "redirect:/rating/update";
+        }
     }
 
     @GetMapping("/rating/delete/{id}")

@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 
 @Controller
 public class TradeController {
@@ -28,7 +30,8 @@ public class TradeController {
         // TODO: find all Trade, add to model
 
         // => DONE
-        model.addAttribute("trade", tradeService.getAllTrades());
+        List<Trade> trade = tradeService.getAllTrades();
+        model.addAttribute("trade", trade);
 
         return "trade/list";
     }
@@ -41,7 +44,17 @@ public class TradeController {
     @PostMapping("/trade/validate")
     public String validate(@Valid Trade trade, BindingResult result, Model model) {
         // TODO: check data valid and save to db, after saving return Trade list
-        return "trade/add";
+
+        if (!result.hasErrors()) {
+            tradeService.saveTrade(trade);
+            model.addAttribute("trade", tradeService.getAllTrades());
+
+            return "trade/list";
+
+        } else {
+
+            return "trade/add";
+        }
     }
 
     @GetMapping("/trade/update/{id}")

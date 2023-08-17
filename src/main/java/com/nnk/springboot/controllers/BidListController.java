@@ -76,6 +76,7 @@ public class BidListController {
                              BindingResult result, Model model) {
         // TODO: check required fields, if valid call service to update Bid and return list Bid
 
+        // => DONE
         if (!result.hasErrors()) {
             bidList.setId(id);
             bidListService.saveBidList(bidList);
