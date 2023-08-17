@@ -44,8 +44,21 @@ public class CurveController {
     @PostMapping("/curvePoint/validate")
     public String validate(@Valid CurvePoint curvePoint, BindingResult result, Model model) {
         // TODO: check data valid and save to db, after saving return Curve list
-        return "curvePoint/add";
+
+        // => DONE
+        // if info is correct in the form
+        if (!result.hasErrors()) {
+            curvePointService.saveCurvePoint(curvePoint);
+            model.addAttribute("curvePoint", curvePointService.getAllCurvePoints());
+
+            return "curvePoint/list";
+
+        } else {
+            // stay on the form
+            return "curvePoint/add";
+        }
     }
+
 
     @GetMapping("/curvePoint/update/{id}")
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) {

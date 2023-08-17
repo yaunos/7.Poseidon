@@ -45,6 +45,7 @@ public class BidListController {
     public String validate(@Valid BidList bid, BindingResult result, Model model) {
         // TODO: check data valid and save to db, after saving return bid list
 
+        // => DONE
         // if info is correct in the form
         if (!result.hasErrors()) {
             bidListService.saveBidList(bid);
@@ -57,9 +58,6 @@ public class BidListController {
             return "bidList/add";
 
         }
-
-
-
     }
 
     @GetMapping("/bidList/update/{id}")
@@ -69,6 +67,7 @@ public class BidListController {
         // => DONE
 
         BidList bidList = bidListService.getABidListByItsId(id).orElseThrow(() -> new IllegalArgumentException("Bidlist number " + id + " doesn't exist"));
+        model.addAttribute("bidList", bidList);
         return "bidList/update";
     }
 
@@ -77,16 +76,14 @@ public class BidListController {
                              BindingResult result, Model model) {
         // TODO: check required fields, if valid call service to update Bid and return list Bid
 
-        //if (!result.hasErrors()) {
-        //    bidList.setId(id);
-        //    bidListService.saveBidList(bidList);
-        //    model.addAttribute("bidList", bidListService.getAllBids());
-        //    return "redirect:/bidList/list";
-        //} else {
-
-        return "bidList/update";
-
-
+        if (!result.hasErrors()) {
+            bidList.setId(id);
+            bidListService.saveBidList(bidList);
+            model.addAttribute("bidList", bidListService.getAllBids());
+           return "redirect:/bidList/list";
+        } else {
+            return "bidList/update";
+        }
     }
 
     @GetMapping("/bidList/delete/{id}")

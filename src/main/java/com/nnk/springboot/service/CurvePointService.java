@@ -21,6 +21,14 @@ public class CurvePointService {
     }
 
     /**
+     * UPDATE/SAVE a curvePoint by id from all bids from data source
+     */
+    public CurvePoint saveCurvePoint(CurvePoint curvePoint) {
+        CurvePoint savedCurvePoint = curvePointRepository.save(curvePoint);
+        return savedCurvePoint;
+    }
+
+    /**
      * DELETE a curve point
      */
     public void deleteCurvePoint(final Integer id) {
