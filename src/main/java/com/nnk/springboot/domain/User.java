@@ -2,6 +2,11 @@ package com.nnk.springboot.domain;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+
+import java.util.Collections;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -17,6 +22,16 @@ public class User {
     private String fullname;
     @NotBlank(message = "Role is mandatory")
     private String role;
+
+
+    /**
+     *  Rôle est un cas particulier ici car n'est pas un ensemble de rôles dans la base, c'est soit USER soit ADMIN
+     */
+
+    public List<GrantedAuthority> getAuthorities() {
+        return Collections.singletonList(new SimpleGrantedAuthority(role));
+    }
+
 
     public Integer getId() {
         return id;

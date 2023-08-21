@@ -1,3 +1,4 @@
+C:\Users\DevPC\Documents\OpenClassrooms Java\Projet 7 Transformez votre backend en API pour rendre votre application plus sécurisée\src\main\java\com\nnk\springboot\service\CustomUserDetailsService.java
 C:\Users\DevPC\Documents\OpenClassrooms Java\Projet 7 Transformez votre backend en API pour rendre votre application plus sécurisée\src\main\java\com\nnk\springboot\controllers\BidListController.java
 C:\Users\DevPC\Documents\OpenClassrooms Java\Projet 7 Transformez votre backend en API pour rendre votre application plus sécurisée\src\main\java\com\nnk\springboot\service\TradeService.java
 C:\Users\DevPC\Documents\OpenClassrooms Java\Projet 7 Transformez votre backend en API pour rendre votre application plus sécurisée\src\main\java\com\nnk\springboot\controllers\LoginController.java
@@ -6,6 +7,7 @@ C:\Users\DevPC\Documents\OpenClassrooms Java\Projet 7 Transformez votre backend 
 C:\Users\DevPC\Documents\OpenClassrooms Java\Projet 7 Transformez votre backend en API pour rendre votre application plus sécurisée\src\main\java\com\nnk\springboot\domain\Trade.java
 C:\Users\DevPC\Documents\OpenClassrooms Java\Projet 7 Transformez votre backend en API pour rendre votre application plus sécurisée\src\main\java\com\nnk\springboot\domain\RuleName.java
 C:\Users\DevPC\Documents\OpenClassrooms Java\Projet 7 Transformez votre backend en API pour rendre votre application plus sécurisée\src\main\java\com\nnk\springboot\repositories\RuleNameRepository.java
+C:\Users\DevPC\Documents\OpenClassrooms Java\Projet 7 Transformez votre backend en API pour rendre votre application plus sécurisée\src\main\java\com\nnk\springboot\service\UserDetailsService.java
 C:\Users\DevPC\Documents\OpenClassrooms Java\Projet 7 Transformez votre backend en API pour rendre votre application plus sécurisée\src\main\java\com\nnk\springboot\repositories\BidListRepository.java
 C:\Users\DevPC\Documents\OpenClassrooms Java\Projet 7 Transformez votre backend en API pour rendre votre application plus sécurisée\src\main\java\com\nnk\springboot\controllers\RuleNameController.java
 C:\Users\DevPC\Documents\OpenClassrooms Java\Projet 7 Transformez votre backend en API pour rendre votre application plus sécurisée\src\main\java\com\nnk\springboot\Application.java
@@ -13,6 +15,7 @@ C:\Users\DevPC\Documents\OpenClassrooms Java\Projet 7 Transformez votre backend 
 C:\Users\DevPC\Documents\OpenClassrooms Java\Projet 7 Transformez votre backend en API pour rendre votre application plus sécurisée\src\main\java\com\nnk\springboot\repositories\UserRepository.java
 C:\Users\DevPC\Documents\OpenClassrooms Java\Projet 7 Transformez votre backend en API pour rendre votre application plus sécurisée\src\main\java\com\nnk\springboot\service\BidListService.java
 C:\Users\DevPC\Documents\OpenClassrooms Java\Projet 7 Transformez votre backend en API pour rendre votre application plus sécurisée\src\main\java\com\nnk\springboot\service\CurvePointService.java
+C:\Users\DevPC\Documents\OpenClassrooms Java\Projet 7 Transformez votre backend en API pour rendre votre application plus sécurisée\src\main\java\com\nnk\springboot\configuration\SpringSecurityConfig.java
 C:\Users\DevPC\Documents\OpenClassrooms Java\Projet 7 Transformez votre backend en API pour rendre votre application plus sécurisée\src\main\java\com\nnk\springboot\repositories\TradeRepository.java
 C:\Users\DevPC\Documents\OpenClassrooms Java\Projet 7 Transformez votre backend en API pour rendre votre application plus sécurisée\src\main\java\com\nnk\springboot\service\RuleNameService.java
 C:\Users\DevPC\Documents\OpenClassrooms Java\Projet 7 Transformez votre backend en API pour rendre votre application plus sécurisée\src\main\java\com\nnk\springboot\domain\CurvePoint.java
