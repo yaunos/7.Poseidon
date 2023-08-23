@@ -37,14 +37,11 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 // .csrf().disable()
 
                 .authorizeRequests()
-                //.antMatchers("/user/list", "/user/add", "/user/update").hasRole("ADMIN")
-                //.antMatchers("/user/list", "/user/add", "/user/update").hasAuthorities("ADMIN")
-                //.antMatchers("/user/list", "/user/add", "/user/update").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 //.oauth2Login()
-                //.loginPage("/login.html")
+                //.loginPage("/login")
                 //.defaultSuccessUrl("/loginSuccess.html", true)
                 //.failureUrl("/loginFail.html")
                 .permitAll()
@@ -66,9 +63,11 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
         // on ajoute des utilisateurs pour tester l'API et s'affranchir des utilisateurs de la base de données
 
         authenticationManagerBuilder.inMemoryAuthentication()
-                .withUser("user").password("easypassword").roles("USER")
+                //.withUser("user").password("easypassword").roles("USER")
+                .withUser("user").password("$2y$10$8D/y9DQyoLIucGiLuySDJuxhLAq7.1vy/UjZGobILX.h9/Uhh8bOy").roles("USER")
                 .and()
-                .withUser("poseidon").password("strongpassword").roles("ADMIN");
+                //.withUser("poseidon").password("strongpassword").roles("ADMIN");
+                .withUser("poseidon").password("$2y$10$iXN.lAOsHgJry2XyZazFrunXrP0OnfAfLbI8eSTEAYlODB8I19jLK").roles("USER");
     }
 
     /**

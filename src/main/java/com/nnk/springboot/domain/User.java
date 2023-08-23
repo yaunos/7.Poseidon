@@ -1,10 +1,10 @@
 package com.nnk.springboot.domain;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.Collections;
 import java.util.List;
 
