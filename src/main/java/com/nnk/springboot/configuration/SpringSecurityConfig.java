@@ -37,7 +37,11 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 // .csrf().disable()
 
                 .authorizeRequests()
+                // toutes les requêtes sur le serveur doivent être authetifiées
                 .anyRequest().authenticated()
+                //.antMatchers("/user/list", "/user/add", "/user/update").hasRole("ADMIN")
+                .antMatchers("/user/list", "/user/add", "/user/update").hasAuthority("ADMIN")
+                //.antMatchers("/user/list", "/user/add", "/user/update").hasRole("ADMIN")
                 .and()
                 .formLogin()
                 //.oauth2Login()
