@@ -49,7 +49,7 @@ public class TradeController {
             tradeService.saveTrade(trade);
             model.addAttribute("trade", tradeService.getAllTrades());
 
-            return "trade/list";
+            return "redirect:/trade/list";
 
         } else {
 

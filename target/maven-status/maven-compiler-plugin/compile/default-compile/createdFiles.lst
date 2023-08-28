@@ -17,6 +17,7 @@ com\nnk\springboot\controllers\HomeController.class
 com\nnk\springboot\service\CustomUserDetailsService.class
 com\nnk\springboot\domain\User.class
 com\nnk\springboot\repositories\TradeRepository.class
+com\nnk\springboot\Utils\PasswordValidator.class
 com\nnk\springboot\repositories\BidListRepository.class
 com\nnk\springboot\controllers\CurveController.class
 com\nnk\springboot\service\CurvePointService.class

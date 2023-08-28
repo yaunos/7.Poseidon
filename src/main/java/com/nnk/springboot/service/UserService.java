@@ -40,8 +40,9 @@ public class UserService {
     /**
      * DELETE a user
      */
-    public void deleteTrade (final Integer id) {
+    public void deleteUser (final Integer id) {
         userRepository.deleteById(id);
     }
+
 
 }

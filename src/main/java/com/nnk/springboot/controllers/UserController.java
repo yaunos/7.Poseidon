@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.validation.*;
+import javax.validation.Valid;
+
+import static com.nnk.springboot.Utils.PasswordValidator.validatePassword;
 
 @Controller
 public class UserController {
@@ -33,11 +35,15 @@ public class UserController {
 
     @PostMapping("/user/validate")
     public String validate(@Valid User user, BindingResult result, Model model) {
-        if (!result.hasErrors()) {
+        //if (!result.hasErrors()) {
+        if (validatePassword(user.getPassword())) {
+
             BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
             user.setPassword(encoder.encode(user.getPassword()));
             userRepository.save(user);
-            model.addAttribute("users", userRepository.findAll());
+            //usersService.saveUser(user);
+            model.addAttribute("user", userRepository.findAll());
+            //model.addAttribute("users", userService.getAllUsers());
             return "redirect:/user/list";
         }
         return "user/add";
@@ -62,7 +68,7 @@ public class UserController {
         user.setPassword(encoder.encode(user.getPassword()));
         user.setId(id);
         userRepository.save(user);
-        model.addAttribute("users", userRepository.findAll());
+        model.addAttribute("user", userRepository.findAll());
         return "redirect:/user/list";
     }
 

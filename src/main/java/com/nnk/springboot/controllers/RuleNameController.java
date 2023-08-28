@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.validation.*;
+import javax.validation.Valid;
+import java.util.List;
 
 
 @Controller
@@ -28,7 +29,9 @@ public class RuleNameController {
     {
         // TODO: find all RuleName, add to model
         // => DONE
-        model.addAttribute("ruleName", ruleNameService.getAllRuleNames());
+        //model.addAttribute("ruleName", ruleNameService.getAllRuleNames());
+        List<RuleName> ruleName = ruleNameService.getAllRuleNames();
+        model.addAttribute("ruleName", ruleName);
         return "ruleName/list";
     }
 
