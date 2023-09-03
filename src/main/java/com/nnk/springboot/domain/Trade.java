@@ -61,4 +61,10 @@ public class Trade {
     @Column(name = "side")
     private String side;
 
+    public Trade() {
+    }
+
+    public Trade(String tradeAccount, String type) {
+    }
+
 }

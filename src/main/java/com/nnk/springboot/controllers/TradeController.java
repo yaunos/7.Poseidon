@@ -60,6 +60,10 @@ public class TradeController {
     @GetMapping("/trade/update/{id}")
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
         // TODO: get Trade by Id and to model then show to the form
+
+        // => DONE
+        Trade trade = tradeService.getATradeByItsId(id).orElseThrow(() -> new IllegalArgumentException("Trade number " + id + " doesn't exist"));
+        model.addAttribute("trade", trade);
         return "trade/update";
     }
 
@@ -67,7 +71,16 @@ public class TradeController {
     public String updateTrade(@PathVariable("id") Integer id, @Valid Trade trade,
                              BindingResult result, Model model) {
         // TODO: check required fields, if valid call service to update Trade and return Trade list
-        return "redirect:/trade/list";
+
+        // => DONE
+        if (!result.hasErrors()) {
+            trade.setId(id);
+            tradeService.saveTrade(trade);
+            model.addAttribute("trade", tradeService.getAllTrades());
+            return "redirect:/trade/list";
+        } else {
+            return "redirect:/trade/update";
+        }
     }
 
     @GetMapping("/trade/delete/{id}")

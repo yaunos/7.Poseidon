@@ -82,17 +82,22 @@
             <!-- <version>5.7.8</version> -->
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <scope>test</scope>
+        </dependency>
 
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.9.1</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.13.2</version>
+            <!-- <version>5.9.1</version> -->
             <scope>test</scope>
         </dependency>
 
@@ -108,6 +113,11 @@
             <version>6.1.5.Final</version> <!-- You can use a different version if needed -->
         </dependency>
 
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
 
 
         <!--
@@ -130,6 +140,16 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M5</version> <!-- Utilisez la dernière version disponible -->
+                <configuration>
+                    <includes>
+                        <include>**/*Test.java</include> <!-- Spécifie les classes de test à exécuter -->
+                    </includes>
+                </configuration>
             </plugin>
         </plugins>
     </build>

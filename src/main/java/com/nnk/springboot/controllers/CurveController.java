@@ -51,7 +51,7 @@ public class CurveController {
             curvePointService.saveCurvePoint(curvePoint);
             model.addAttribute("curvePoint", curvePointService.getAllCurvePoints());
 
-            return "curvePoint/list";
+            return "redirect:/curvePoint/list";
 
         } else {
             // stay on the form

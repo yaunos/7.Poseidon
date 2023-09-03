@@ -45,11 +45,12 @@ public class RatingController {
     public String validate(@Valid Rating rating, BindingResult result, Model model) {
         // TODO: check data valid and save to db, after saving return Rating list
 
+        // FIXME => DONE
         if (!result.hasErrors()) {
             ratingService.saveRating(rating);
             model.addAttribute("rating", ratingService.getAllRatings());
 
-            return "rating/list";
+            return "redirect:/rating/list";
 
         } else {
 
@@ -61,7 +62,7 @@ public class RatingController {
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
         // TODO: get Rating by Id and to model then show to the form
 
-        // => DONE
+        // FIXME => DONE
         Rating rating = ratingService.getARatingByItsId(id).orElseThrow(() -> new IllegalArgumentException("Bidlist number " + id + " doesn't exist"));
         model.addAttribute("rating", rating);
         return "rating/update";
@@ -71,6 +72,8 @@ public class RatingController {
     public String updateRating(@PathVariable("id") Integer id, @Valid Rating rating,
                              BindingResult result, Model model) {
         // TODO: check required fields, if valid call service to update Rating and return Rating list
+
+        // FIXME => DONE
         if (!result.hasErrors()) {
             rating.setId(id);
             ratingService.saveRating(rating);
@@ -84,6 +87,10 @@ public class RatingController {
     @GetMapping("/rating/delete/{id}")
     public String deleteRating(@PathVariable("id") Integer id, Model model) {
         // TODO: Find Rating by Id and delete the Rating, return to Rating list
+
+        // FIXME => DONE
+        ratingService.deleteRating(id);
+
         return "redirect:/rating/list";
     }
 }

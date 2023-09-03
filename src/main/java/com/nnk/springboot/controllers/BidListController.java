@@ -52,7 +52,7 @@ public class BidListController {
             bidListService.saveBidList(bid);
             model.addAttribute("bidList", bidListService.getAllBids());
 
-            return "bidList/list";
+            return "redirect:/bidList/list";
 
         } else {
             // stay on the form

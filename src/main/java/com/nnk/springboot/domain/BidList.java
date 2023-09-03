@@ -61,6 +61,17 @@ public class BidList {
     @Column(name="side")
     private String side;
 
+
+    public BidList() {
+        // super();
+    }
+
+    public BidList(String accountTest, String typeTest, double v) {
+    }
+
+    // public BidList(String testAccount, String testType, double v) {
+   //  }
+
     public int getId() {
         return id;
     }

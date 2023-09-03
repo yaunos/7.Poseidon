@@ -14,6 +14,9 @@ public class BidListService {
     @Autowired
     private BidListRepository bidListRepository;
 
+    public BidListService(BidListRepository bidListRepository) {
+    }
+
     /**
      * READ (ALL) : Find all BidLists from data source
      */

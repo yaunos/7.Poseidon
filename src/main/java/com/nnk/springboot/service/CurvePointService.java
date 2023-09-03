@@ -14,6 +14,9 @@ public class CurvePointService {
     @Autowired
     private CurvePointRepository curvePointRepository;
 
+    public CurvePointService(CurvePointRepository curvePointRepository) {
+    }
+
     /**
      * READ (ALL) : Find all curve points from data source
      */

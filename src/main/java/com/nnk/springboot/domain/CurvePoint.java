@@ -31,4 +31,10 @@ public class CurvePoint {
     @Column(name = "creation_date")
     private Timestamp creationDate;
 
+    public CurvePoint() {
+
+    }
+
+    public CurvePoint(int i, double v, double v1) {
+    }
 }

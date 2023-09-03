@@ -47,7 +47,7 @@ public class RuleNameController {
             ruleNameService.saveRuleName(ruleName);
             model.addAttribute("ruleName", ruleNameService.getAllRuleNames());
 
-            return "ruleName/list";
+            return "redirect:/ruleName/list";
 
         } else {
 
@@ -58,6 +58,10 @@ public class RuleNameController {
     @GetMapping("/ruleName/update/{id}")
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
         // TODO: get RuleName by Id and to model then show to the form
+
+        // => DONE
+        RuleName ruleName = ruleNameService.getARuleNameByItsId(id).orElseThrow(() -> new IllegalArgumentException("Rulename number " + id + " doesn't exist"));
+        model.addAttribute("ruleName", ruleName);
         return "ruleName/update";
     }
 
@@ -65,7 +69,16 @@ public class RuleNameController {
     public String updateRuleName(@PathVariable("id") Integer id, @Valid RuleName ruleName,
                              BindingResult result, Model model) {
         // TODO: check required fields, if valid call service to update RuleName and return RuleName list
-        return "redirect:/ruleName/list";
+
+        // => DONE
+        if (!result.hasErrors()) {
+            ruleName.setId(id);
+            ruleNameService.saveRuleName(ruleName);
+            model.addAttribute("trade", ruleNameService.getAllRuleNames());
+            return "redirect:/ruleName/list";
+        } else {
+            return "redirect:/ruleName/update";
+        }
     }
 
     @GetMapping("/ruleName/delete/{id}")
