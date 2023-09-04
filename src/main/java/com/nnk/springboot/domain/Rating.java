@@ -3,6 +3,8 @@ package com.nnk.springboot.domain;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Positive;
 
 @Data
 @Entity
@@ -23,7 +25,10 @@ public class Rating {
     @Column(name = "sand_rating")
     private String sandRating;
     @Column(name = "fitch_rating")
+    @Pattern(regexp = "\\d+", message = "Le 'fitch rating' doit contenir uniquement des chiffres.")
     private String fitchRating;
+
+    @Positive
     @Column(name = "order_number")
     private Integer orderNumber;
 
